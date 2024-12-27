@@ -9,11 +9,11 @@ import router from './router/index';
 
 function render(props) {
   const { container } = props;
-  ReactDOM.render(
+  const root = ReactDOM.createRoot(container ? container.querySelector('#root') : document.querySelector('#root'));
+  root.render(
     <RouterProvider router={router}>
       <App />
-    </RouterProvider>,
-    container ? container.querySelector('#root') : document.querySelector('#root')
+    </RouterProvider>
   );
 }
 
@@ -37,6 +37,6 @@ export async function mount(props) {
 }
 
 export async function unmount(props) {
-  const { container } = props;
-  ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
+  // const { container } = props;
+  // ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
 }

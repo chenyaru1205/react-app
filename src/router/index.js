@@ -1,22 +1,16 @@
 // 引入组件
-import App from "../App";
+// import App from "../App";
 import HomeView from "../views/HomeView";
 import AboutView from "../views/AboutView";
  
 import { createBrowserRouter, Navigate } from "react-router-dom";
-
-const base = window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/'
  
 const router = createBrowserRouter([
-  {
-    path: base + "/",
-    element: < App />,
-    children: [
-      { path: base + "/", element: <Navigate to="home" replace /> },
-      { path: base + "home", element: <HomeView /> },
-      { path: base + "about", element: <AboutView /> }
-    ]
-  },
-])
+    { path: "/", element: <Navigate to="home" replace /> },
+    { path: "/home", element: <HomeView /> },
+    { path: "/about", element: <AboutView /> }
+], {
+  basename: window.__POWERED_BY_QIANKUN__ ? '/react-app' : '/'
+})
  
 export default router
